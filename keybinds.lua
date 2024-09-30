@@ -19,8 +19,9 @@ return {
     { key = 'k', mods = 'ALT', action = wezterm.action.AdjustPaneSize { 'Up', 2 }, },
     { key = 'l', mods = 'ALT', action = wezterm.action.AdjustPaneSize { 'Right', 2 }, },
 
-    { key = "c" , mods="CTRL|SHIFT", action=act.CopyTo("Clipboard")},
-    { key = "[", mods fh 'LEADER' action = wezterm.action.ActivateCopyMode },
+    { key = "v", mods = "CMD", action = act.PasteFrom 'Clipboard'},
+    { key = "c", mods = "CMD", action = act.CopyTo 'ClipboardAndPrimarySelection'},
+
   },
   key_tables = {
     copy_mode = {
