@@ -9,18 +9,19 @@ end
 
 config.font_dirs = {'~/Library/Fonts/'}
 config.font = wezterm.font_with_fallback({
-    {family='Source Han Code JP', weight="Regular", stretch='Normal'},
-    'JetBrains Mono',
-    'Fira Code',
-    'DengXian',
+  {family='Cica'},
+  {family='Source Han Code JP', weight="Regular", stretch='Normal'},
+  'JetBrains Mono',
+  'DengXian',
 })
 config.use_ime = true
 config.macos_forward_to_ime_modifier_mask = 'SHIFT|CTRL'
-config.font_size = 18.0
+config.font_size = 20.0
 config.color_scheme = "nord"
 config.window_background_opacity = 0.93
 config.hide_tab_bar_if_only_one_tab = true
-config.adjust_window_size_when_changing_font_size = fals
+config.adjust_window_size_when_changing_font_size = false
+--config.window_decorations = "RESIZE"
 
 --[[
 wezterm.on('gui-startup', function(cmd)

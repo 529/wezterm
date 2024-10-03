@@ -22,6 +22,25 @@ return {
     { key = "v", mods = "CMD", action = act.PasteFrom 'Clipboard'},
     { key = "c", mods = "CMD", action = act.CopyTo 'ClipboardAndPrimarySelection'},
 
+    { key = 'L', mods = 'CTRL', action = wezterm.action.ShowDebugOverlay },
+    -- tab 
+    { key = 't', mods = 'LEADER', action = act.SpawnTab 'CurrentPaneDomain'},
+    { key = 's', mods = 'LEADER', action = wezterm.action.ShowTabNavigator },
+    { key = 'a', mods = 'LEADER', action = act.ActivateTabRelative(-1) },
+    { key = 'f', mods = 'LEADER', action = act.ActivateTabRelative(1) },
+    -- workspace
+    { key = 'w', mods = 'LEADER', action = act.ShowLauncherArgs { flags = 'WORKSPACES' , title = "Select workspace" }}, 
+    { key = '$', mods = 'LEADER',
+      action = act.PromptInputLine {
+        description = '(wezterm) Set workspace title:',
+        action = wezterm.action_callback(
+          function(win,pane,line)
+            if line then
+              wezterm.mux.rename_workspace( wezterm.mux.get_active_workspace(), line)
+            end
+          end),
+      },
+    },
   },
   key_tables = {
     copy_mode = {
