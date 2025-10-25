@@ -29,7 +29,7 @@ return {
     { key = 'a', mods = 'LEADER', action = act.ActivateTabRelative(-1) },
     { key = 'f', mods = 'LEADER', action = act.ActivateTabRelative(1) },
     -- workspace
-    { key = 'w', mods = 'LEADER', action = act.ShowLauncherArgs { flags = 'WORKSPACES' , title = "Select workspace" }}, 
+    { key = 'w', mods = 'LEADER', action = act.ShowLauncherArgs { flags = 'WORKSPACES' , title = "Select workspace" }},
     { key = '$', mods = 'LEADER',
       action = act.PromptInputLine {
         description = '(wezterm) Set workspace title:',
@@ -41,6 +41,7 @@ return {
           end),
       },
     },
+    { key = '[', mods = 'LEADER', action = act.ActivateCopyMode },
   },
   key_tables = {
     copy_mode = {
