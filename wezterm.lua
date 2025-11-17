@@ -17,7 +17,8 @@ config.font = wezterm.font_with_fallback({
 
 config.use_ime = true
 config.macos_forward_to_ime_modifier_mask = 'SHIFT|CTRL'
-config.font_size = 20.0
+config.font_size = 22.0
+config.audible_bell = 'Disabled'
 config.color_scheme = "nord"
 config.window_background_opacity = 0.9
 config.hide_tab_bar_if_only_one_tab = true
