@@ -73,12 +73,22 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
   local background = "#5c6d74"
   local foreground = "#FFFFFF"
   local edge_background = "none"
+
+  -- SSH判定（プロセスのタイトルに ssh が含まれているか、または user_vars を確認）
+  local pane_title = tab.active_pane.title
+  local is_ssh = pane_title:lower():match("ssh") or tab.active_pane.user_vars.IS_SSH == 'true'
+
+
   if tab.is_active then
-    background = "#32cdcd"
+    background = is_ssh and "#ff0000" or "#32cdcd" -- SSH時は red 、通常は現在の水色
     foreground = "#FFFFFF"
+  else
+    background = is_ssh and "#4e352d" or "#5c6d74" -- 非アクティブ時のSSHは少し暗い茶色
   end
+
   local edge_foreground = background
-  local title = "   " .. wezterm.truncate_right(tab.active_pane.title, max_width - 1) .. "   "
+  local prefix = is_ssh and " 🌐 " or "   "
+  local title = prefix .. wezterm.truncate_right(tab.active_pane.title, max_width - 1) .. "   "
   return {
     { Background = { Color = edge_background } },
     { Foreground = { Color = edge_foreground } },
@@ -111,5 +121,18 @@ config.leader = { key = 's', mods = 'CTRL', timeout_milliseconds = 2000 }
 local keybind = require 'keybinds'
 config.keys = keybind.keys
 config.key_tables = keybind.key_tables
+
+
+----------------------------------------------------
+-- macbook air 
+----------------------------------------------------
+config.ssh_domains = {
+  {
+    name = 'mba',
+    remote_address = '192.168.2.177',
+    username = 'koji',
+    remote_wezterm_path = '/opt/homebrew/bin/wezterm',
+  },
+}
 
 return config

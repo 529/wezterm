@@ -2,7 +2,7 @@ local wezterm = require 'wezterm'
 local act = wezterm.action
 
 return {
-  keys = {
+  keys = { 
     { key = "+", mods = "LEADER", action = wezterm.action.IncreaseFontSize },
     { key = "-", mods = "LEADER", action = wezterm.action.DecreaseFontSize },
 
@@ -19,6 +19,9 @@ return {
     { key = 'k', mods = 'ALT', action = wezterm.action.AdjustPaneSize { 'Up', 2 }, },
     { key = 'l', mods = 'ALT', action = wezterm.action.AdjustPaneSize { 'Right', 2 }, },
 
+    -- zoom panel 
+    { key = 'z', mods = 'LEADER', action = wezterm.action.TogglePaneZoomState, },
+
     { key = "v", mods = "CMD", action = act.PasteFrom 'Clipboard'},
     { key = "c", mods = "CMD", action = act.CopyTo 'ClipboardAndPrimarySelection'},
 
@@ -26,9 +29,9 @@ return {
     -- tab 
     { key = 't', mods = 'LEADER', action = act.SpawnTab 'CurrentPaneDomain'},
     { key = 's', mods = 'LEADER', action = wezterm.action.ShowTabNavigator },
-    { key = 'a', mods = 'LEADER', action = act.ActivateTabRelative(-1) },
+    { key = 'd', mods = 'LEADER', action = act.ActivateTabRelative(-1) },
     { key = 'f', mods = 'LEADER', action = act.ActivateTabRelative(1) },
-    -- workspace
+    -- workspce
     { key = 'w', mods = 'LEADER', action = act.ShowLauncherArgs { flags = 'WORKSPACES' , title = "Select workspace" }},
     { key = '$', mods = 'LEADER',
       action = act.PromptInputLine {
